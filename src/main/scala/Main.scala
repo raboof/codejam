@@ -14,7 +14,7 @@ object Main extends App {
   Source.fromInputStream(input)(Codec.UTF8)
     .getLines()
     .drop(1)
-    .map(n =>Sheep.lastCall(n.toInt))
+    .map(n => Impl.flips(n.trim()))
     .zipWithIndex
     .map {
       case (result, idx) => s"Case #${idx+1}: $result"
