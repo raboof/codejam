@@ -7,7 +7,7 @@ object Main extends App {
     .map(n =>Sheep.lastCall(n.toInt))
     .zipWithIndex
     .map {
-      case (result, idx) => s"Case ${idx+1}: $result"
+      case (result, idx) => s"Case #${idx+1}: $result"
     }
     .foreach(println)
 }
