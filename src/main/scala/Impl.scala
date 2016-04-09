@@ -2,13 +2,9 @@ import scala.annotation._
 
 object Impl {
   def flips(stack: String): Int = {
-    var current = '+'
-    var flips = 0
-    stack.reverse.foreach { pancake: Char =>
-      if (pancake != current) {
-        flips = flips + 1
-        current = pancake
-      }
+    val (flips, _) = stack.reverse.foldLeft((0, '+')) {
+      case ((flips, current), pancake) if pancake != current => (flips + 1, pancake)
+      case (state, _) => state
     }
     flips
   }
