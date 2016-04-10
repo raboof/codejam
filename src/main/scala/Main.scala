@@ -11,10 +11,12 @@ object Main extends App {
     .map(file => { println(s"Writing $file"); new FileOutputStream(file) })
     .getOrElse(System.out))
 
+  val regex = """(\d+) (\d+) (\d+)"""r
+
   Source.fromInputStream(input)(Codec.UTF8)
     .getLines()
     .drop(1)
-    .map(n => Impl.flips(n.trim()))
+    .map { case regex(k, c, s) => Impl.clean(k.toInt, c.toInt, s.toInt) }
     .zipWithIndex
     .map {
       case (result, idx) => s"Case #${idx+1}: $result"
