@@ -18,9 +18,7 @@ object Impl {
 
   def clean(k: Int, complexity: Int): Seq[Long] =
     split(Range(0, k).map(_.toLong), complexity).map(s => {
-      val result = idx(s, k, complexity - 1) + 1
-      println(s"$result touches $s")
-      result
+      idx(s, k, complexity - 1) + 1
     })
 
   def idx(s: Seq[Long], k: Long, c: Int): Long =
